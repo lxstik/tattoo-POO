@@ -1,6 +1,6 @@
 <?php
 $host = 'mysql-yehor.alwaysdata.net';
-$dbname = 'yehor_uf3';
+$dbname = 'yehor_tattoo';
 $username = 'yehor';
 $password = '1407831h';
 
