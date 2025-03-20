@@ -41,7 +41,7 @@
           <ul class="d-flex list-unstyled align-items-center m-0">
             <?php if (!isset($_SESSION['user_id'])): ?>
               <li class="me-3"><a href="login.php" class="text-white text-decoration-none">Iniciar sesión</a></li>
-              <li><a href="register.php" class="text-white text-decoration-none">Registrarse</a></li>
+              <li><a href="register.php" class="text-white text-decoration-none" style="padding-left: 20px;">Registrarse</a></li>
             <?php else: ?>
               <li><a href="logout.php" class="text-white text-decoration-none" style="padding-left: 20px;">Cerrar sesión</a></li>
             <?php endif; ?>

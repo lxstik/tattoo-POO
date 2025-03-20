@@ -1,10 +1,9 @@
 <?php
-
-
+session_start();
+require_once "./bbdd/config.php";
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
