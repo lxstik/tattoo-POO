@@ -14,8 +14,9 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-          <li class="nav-item active">
-            <a class="nav-link" href="service.php">Services <span class="sr-only">(current)</span></a>
+          <li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="service.php">Services</a>
           </li>
           <li class="nav-item"><a class="nav-link" href="gallery.php">Gallery</a></li>
         </ul>

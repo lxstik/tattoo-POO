@@ -3,8 +3,8 @@ session_start();
 require_once "./bbdd/config.php";
 
 
+$resultado = $mysqli->query("SELECT * FROM Tattoos");
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -41,7 +41,9 @@ require_once "./bbdd/config.php";
 
 <body class="sub_page">
 
-<?php include_once('./components/header.php');?>
+  <div class="hero_area">
+    <?php include_once('./components/header.php'); ?>
+  </div>
 
   <!-- gallery section -->
 
@@ -53,66 +55,26 @@ require_once "./bbdd/config.php";
         </h2>
       </div>
       <div class="row">
-        <div class=" col-sm-8 col-md-6 px-0">
-          <div class="img-box">
-            <img src="images/g1.jpg" alt="">
+
+        <?php
+        echo '<div class="row no-gutters">';
+        while ($proyecto = $resultado->fetch_assoc()) {
+          echo '
+    <div class="col-sm-12 col-md-4">
+        <div class="img-box" style="padding: 0;">
+            <img src="' . htmlspecialchars($proyecto['photo']) . '" alt="" style="width: 100%; height: 600px; object-fit: cover;"> <!-- Ajusta el tamaño de las imágenes -->
             <div class="btn-box">
-              <a href="images/g1.jpg" data-toggle="lightbox" class="btn-1">
-                <i class="fa fa-picture-o" aria-hidden="true"></i>
-              </a>
+                <a href="' . htmlspecialchars($proyecto['photo']) . '" data-toggle="lightbox" class="btn-1">
+                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                </a>
             </div>
-          </div>
         </div>
-        <div class="col-sm-4 col-md-3 px-0">
-          <div class="img-box">
-            <img src="images/g2.jpg" alt="">
-            <div class="btn-box">
-              <a href="images/g2.jpg" data-toggle="lightbox" class="btn-1">
-                <i class="fa fa-picture-o" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 px-0">
-          <div class="img-box">
-            <img src="images/g3.jpg" alt="">
-            <div class="btn-box">
-              <a href="images/g3.jpg" data-toggle="lightbox" class="btn-1">
-                <i class="fa fa-picture-o" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 px-0">
-          <div class="img-box">
-            <img src="images/g4.jpg" alt="">
-            <div class="btn-box">
-              <a href="images/g4.jpg" data-toggle="lightbox" class="btn-1">
-                <i class="fa fa-picture-o" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-3 px-0">
-          <div class="img-box">
-            <img src="images/g5.jpg" alt="">
-            <div class="btn-box">
-              <a href="images/g5.jpg" data-toggle="lightbox" class="btn-1">
-                <i class="fa fa-picture-o" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-8 col-md-6 px-0">
-          <div class="img-box">
-            <img src="images/g6.jpg" alt="">
-            <div class="btn-box">
-              <a href="images/g6.jpg" data-toggle="lightbox" class="btn-1">
-                <i class="fa fa-picture-o" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
+    </div>
+    ';
+        }
+        echo '</div>';
+        ?>
+
       </div>
     </div>
   </div>
@@ -120,7 +82,7 @@ require_once "./bbdd/config.php";
   <!-- end gallery section -->
 
   <!-- footer section -->
-  <?php include_once('./components/footer.php');?>
+  <?php include_once('./components/footer.php'); ?>
   <!-- footer section -->
 
   <!-- jQery -->
