@@ -96,7 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 
   <!-- footer section -->
-  <?php include_once('./components/footer.php'); ?>
+   <div style="padding-top: 110px;">
+    <?php include_once('./components/footer.php'); ?>
+   </div>
+  
 
   <!-- jQery -->
   <script src="js/jquery-3.4.1.min.js"></script>

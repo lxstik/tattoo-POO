@@ -72,7 +72,7 @@ if ($_SESSION['user_rol'] !== 'admin') {
             <div class="row g-4">
                 <!-- Botón para Testimonials -->
                 <div class="col-md-6 col-lg-3">
-                    <a href="testimonials.php" class="btn btn-custom w-100 d-flex align-items-center justify-content-center">
+                    <a href="./testimonials/admintestimonial.php" class="btn btn-custom w-100 d-flex align-items-center justify-content-center">
                         Gestionar Testimonials
                     </a>
                 </div>
