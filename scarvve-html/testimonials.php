@@ -2,13 +2,14 @@
 session_start();
 require_once "./bbdd/config.php";
 
-// Verificar si el usuario está autenticado y tiene el rol adecuado
+//si el usuario no es registrado o admin, lo redirigimos a la página de inicio
 if (!isset($_SESSION['user_rol']) || ($_SESSION['user_rol'] !== 'admin' && $_SESSION['user_rol'] !== 'user')) {
     header('Location: index.php');
     exit();
 }
 
-// Procesar el formulario
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $rating = intval($_POST['rating']);
         $date = date('Y-m-d H:i:s'); // Fecha actual
 
-        // Insertar los datos en la tabla Testimonials
+        //  insertar el comentario en la base de datos
         $query = "INSERT INTO Testimonials (user_id, date, description, rating) VALUES (?, ?, ?, ?)";
         $stmt = $mysqli->prepare($query);
 
@@ -25,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
             $stmt->close();
 
-            // Redirigir al index.php después de guardar los datos
+            // guardar los datos y enviar al usuario a la página de inicio
             header('Location: index.php');
             exit();
         }

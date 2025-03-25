@@ -290,36 +290,57 @@ $resultadoTestimonials = $mysqli->query("SELECT user_id, date, description, rati
         <div class="carousel-wrap ">
           <div class="owl-carousel">
 
-            <?php
-            if ($resultadoTestimonials && $resultadoTestimonials->num_rows > 0) {
-              while ($testimonial = $resultadoTestimonials->fetch_assoc()) {
-                echo '
-                    <div class="item">
-                        <div class="box">
-                            <div class="detail-box">
-                                <p>
-                                    ' . htmlspecialchars($testimonial['description']) . '
-                                </p>
-                            </div>
-                            <div class="client_id">
-                                <div class="img-box">
-                                    <img src="images/client' . htmlspecialchars($testimonial['user_id']) . '.jpg" alt="" class="img-1">
-                                </div>
-                                <div class="name">
-                                    <h6>
-                                        User ' . htmlspecialchars($testimonial['user_id']) . '
-                                    </h6>
-                                    <p>
-                                        Rating: ' . htmlspecialchars($testimonial['rating']) . '/5
-                                    </p>
-                                </div>
-                            </div>
+          <?php
+if ($resultadoTestimonials && $resultadoTestimonials->num_rows > 0) {
+    while ($testimonial = $resultadoTestimonials->fetch_assoc()) {
+        // Obtener el avatar del usuario desde la tabla Users
+        $user_id = $testimonial['user_id'];
+        $queryAvatar = "SELECT avatar FROM Users WHERE id = ?";
+        $stmtAvatar = $mysqli->prepare($queryAvatar);
+
+        $avatar_url = "images/default-avatar.jpg"; // URL de avatar predeterminado en caso de que no se encuentre
+
+        if ($stmtAvatar) {
+            $stmtAvatar->bind_param('i', $user_id);
+            $stmtAvatar->execute();
+            $resultAvatar = $stmtAvatar->get_result();
+
+            if ($resultAvatar->num_rows > 0) {
+                $user = $resultAvatar->fetch_assoc();
+                $avatar_url = htmlspecialchars($user['avatar']); // URL del avatar del usuario
+            }
+
+            $stmtAvatar->close();
+        }
+
+        // Mostrar el comentario con la foto del usuario
+        echo '
+            <div class="item">
+                <div class="box">
+                    <div class="detail-box">
+                        <p>
+                            ' . htmlspecialchars($testimonial['description']) . '
+                        </p>
+                    </div>
+                    <div class="client_id">
+                        <div class="img-box">
+                            <img src="' . $avatar_url . '" alt="User Avatar" class="img-1" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="name">
+                            <h6>
+                                User ' . htmlspecialchars($testimonial['user_id']) . '
+                            </h6>
+                            <p>
+                                Rating: ' . htmlspecialchars($testimonial['rating']) . '/5
+                            </p>
                         </div>
                     </div>
-                    ';
-              }
-            }
-            ?>
+                </div>
+            </div>
+        ';
+    }
+}
+?>
 
           </div>
         </div>

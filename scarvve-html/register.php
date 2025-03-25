@@ -2,7 +2,7 @@
 session_start();
 require_once './bbdd/config.php';
 
-$mensaje = ""; // Variable para almacenar el mensaje
+$mensaje = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['Nombres'];
@@ -11,18 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $avatar = $_POST['avatar'];
     $password = $_POST['password'];
 
-    // Hashear la contraseña
+
     $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
-    // Preparar la consulta con los valores correctos
+
     $stmt = $mysqli->prepare(
         "INSERT INTO Users (name, surname, email, avatar, password, rol) 
-        VALUES (?, ?, ?, ?, ?, 'usuario')"
+        VALUES (?, ?, ?, ?, ?, 'user')"
     );
 
-    if (!$stmt) {
-        die('Error en la preparación: ' . $mysqli->error);
-    }
 
     $stmt->bind_param('sssss', $nombre, $apellido, $email, $avatar, $passwordHashed);
 

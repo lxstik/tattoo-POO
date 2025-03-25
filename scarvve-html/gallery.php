@@ -62,7 +62,7 @@ $resultado = $mysqli->query("SELECT * FROM Tattoos");
           echo '
     <div class="col-sm-12 col-md-4">
         <div class="img-box" style="padding: 0;">
-            <img src="' . htmlspecialchars($proyecto['photo']) . '" alt="" style="width: 100%; height: 600px; object-fit: cover;"> <!-- Ajusta el tamaño de las imágenes -->
+            <img src="' . htmlspecialchars($proyecto['photo']) . '" alt="" style="width: 100%; height: 500px; object-fit: cover;"> <!-- Ajusta el tamaño de las imágenes -->
             <div class="btn-box">
                 <a href="' . htmlspecialchars($proyecto['photo']) . '" data-toggle="lightbox" class="btn-1">
                     <i class="fa fa-picture-o" aria-hidden="true"></i>
