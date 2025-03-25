@@ -251,14 +251,14 @@ $resultadoTestimonials = $mysqli->query("SELECT user_id, date, description, rati
       </div>
       <?php
       $counter = 0;
-      echo '<div class="row no-gutters">'; // Se elimina el margen entre columnas
+      echo '<div class="row no-gutters">';
       while ($proyecto = $resultado->fetch_assoc()) {
         if ($counter >= 6) break;
 
         echo '
     <div class="col-sm-12 col-md-4" >
         <div class="img-box" style="padding: 0;">
-            <img src="' . htmlspecialchars($proyecto['photo']) . '" alt="" style="width: 100%; height: 600px; object-fit: cover;"> <!-- Ajusta el tamaño de las imágenes -->
+            <img src="' . htmlspecialchars($proyecto['photo']) . '" alt="" style="width: 100%; height: 500px; object-fit: cover;"> <!-- Ajusta el tamaño de las imágenes -->
             <div class="btn-box">
                 <a href="' . htmlspecialchars($proyecto['photo']) . '" data-toggle="lightbox" class="btn-1">
                     <i class="fa fa-picture-o" aria-hidden="true"></i>
@@ -325,6 +325,12 @@ $resultadoTestimonials = $mysqli->query("SELECT user_id, date, description, rati
         </div>
       </div>
     </div>
+
+    <?php if (isset($_SESSION['user_rol']) && ($_SESSION['user_rol'] === 'user' || $_SESSION['user_rol'] === 'admin')): ?>
+      <div class="text-center mt-4">
+        <a href="testimonials.php" class="btn btn-primary">Leave your comment and rating</a>
+      </div>
+    <?php endif; ?>
   </section>
 
   <!-- end client section -->

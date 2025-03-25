@@ -2,12 +2,7 @@
 session_start();
 require_once "./bbdd/config.php";
 
-// Consulta para obtener los datos del blog desde la tabla News
 $news = $mysqli->query("SELECT * FROM News");
-
-if (!$news) {
-    die("Error en la consulta: " . $mysqli->error);
-}
 ?>
 
 <!DOCTYPE html>
