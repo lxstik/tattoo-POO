@@ -31,15 +31,21 @@ $news = $mysqli->query("SELECT * FROM News");
         <?php
         if ($news->num_rows > 0) {
           while ($entry = $news->fetch_assoc()) {
+            // Manejar valores predeterminados para evitar errores
+            $title = htmlspecialchars($entry['title'] ?? 'Sin título');
+            $img = htmlspecialchars($entry['img'] ?? 'default.jpg');
+            $date = htmlspecialchars($entry['date'] ?? 'Fecha no disponible');
+            $id = htmlspecialchars($entry['id'] ?? '');
+
             echo '
             <div class="col-md-4 mb-4">
               <form action="blog-single.php" method="POST">
                 <div class="card">
-                  <img src="' . htmlspecialchars($entry['img']) . '" class="card-img-top" alt="' . htmlspecialchars($entry['title']) . '" style="height: 200px; object-fit: cover;">
+                  <img src="' . $img . '" class="card-img-top" alt="' . $title . '" style="height: 200px; object-fit: cover;">
                   <div class="card-body text-center">
-                    <h5 class="card-title">' . htmlspecialchars($entry['title']) . '</h5>
-                    <p class="card-text text-muted">' . htmlspecialchars($entry['date']) . '</p>
-                    <input type="hidden" name="id" value="' . htmlspecialchars($entry['id']) . '">
+                    <h5 class="card-title">' . $title . '</h5>
+                    <p class="card-text text-muted">' . $date . '</p>
+                    <input type="hidden" name="id" value="' . $id . '">
                     <button type="submit" class="btn btn-primary">Leer más</button>
                   </div>
                 </div>
@@ -47,6 +53,8 @@ $news = $mysqli->query("SELECT * FROM News");
             </div>
             ';
           }
+        } else {
+          echo '<p class="text-center">No hay noticias disponibles en este momento.</p>';
         }
         ?>
       </div>
