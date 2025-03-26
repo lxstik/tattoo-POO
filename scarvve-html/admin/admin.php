@@ -78,20 +78,26 @@ if ($_SESSION['user_rol'] !== 'admin') {
                 </div>
                 <!-- Botón para Gallery -->
                 <div class="col-md-6 col-lg-3">
-                    <a href="gallery.php" class="btn btn-custom w-100 d-flex align-items-center justify-content-center">
+                    <a href="./gallery/admingallery.php" class="btn btn-custom w-100 d-flex align-items-center justify-content-center">
                         Gestionar Gallery
                     </a>
                 </div>
                 <!-- Botón para Users -->
                 <div class="col-md-6 col-lg-3">
-                    <a href="users.php" class="btn btn-custom w-100 d-flex align-items-center justify-content-center">
+                    <a href="./users/adminusers.php" class="btn btn-custom w-100 d-flex align-items-center justify-content-center">
                         Gestionar Usuarios
                     </a>
                 </div>
                 <!-- Botón para Blog -->
                 <div class="col-md-6 col-lg-3">
-                    <a href="blog.php" class="btn btn-custom w-100 d-flex align-items-center justify-content-center">
+                    <a href="./blog/adminblog.php" class="btn btn-custom w-100 d-flex align-items-center justify-content-center">
                         Gestionar Blog
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <a href="./reserve/adminreserve.php" class="btn btn-custom w-100 d-flex align-items-center justify-content-center">
+                        Gestionar Reservas
                     </a>
                 </div>
             </div>
