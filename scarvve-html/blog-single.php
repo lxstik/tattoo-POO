@@ -40,7 +40,7 @@ $entry = $result->fetch_assoc();
   </div>
     <div class="container mt-5">
         <h1 class="text-center"><?php echo htmlspecialchars($entry['title']); ?></h1>
-        <p class="text-center text-muted"><?php echo htmlspecialchars($entry['date']); ?></p>
+        <p class="text-center text-muted"><?php echo htmlspecialchars($entry['date_post']); ?></p> <!-- Cambiado a date_post -->
         <div class="text-center">
             <img src="<?php echo htmlspecialchars($entry['img']); ?>" alt="<?php echo htmlspecialchars($entry['title']); ?>" style="max-width: 100%; height: auto;">
         </div>

@@ -34,7 +34,7 @@ $news = $mysqli->query("SELECT * FROM News");
             // Manejar valores predeterminados para evitar errores
             $title = htmlspecialchars($entry['title'] ?? 'Sin título');
             $img = htmlspecialchars($entry['img'] ?? 'default.jpg');
-            $date = htmlspecialchars($entry['date'] ?? 'Fecha no disponible');
+            $date = htmlspecialchars($entry['date_post'] ?? 'Fecha no disponible'); // Cambiado a date_post
             $id = htmlspecialchars($entry['id'] ?? '');
 
             echo '
